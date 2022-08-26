@@ -65,4 +65,4 @@ Additionally, the map must comply with the following requirementes:
 -File extension should be ".ber" (".BER" or ".Ber" won't work)
 ```
 
-And of course, as with every other project: no memory leaks, "forbidden functions and control structures", segmentation faults or a relinking Makefile are tolerated.
+And of course, as with every other project: no memory leaks, "forbidden functions and control structures", segmentation faults, bus errors, closing unexpectedly or a relinking Makefile are tolerated.

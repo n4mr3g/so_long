@@ -1,6 +1,6 @@
 # so_long
 
-![image](https://user-images.githubusercontent.com/26860329/186975678-41fd5f18-ddf4-40fe-a708-8d5b1238203a.png)
+![image](https://user-images.githubusercCancel changesontent.com/26860329/186975678-41fd5f18-ddf4-40fe-a708-8d5b1238203a.png)
 
 
 Simple game project written completely in C .
@@ -31,19 +31,20 @@ The executable takes a .ber file as an argument, which should contain a valid ma
 11111111
 ```
 Where each character means the following:
-
->**1**: Walls
->**P**: Player
->**E**: Exit
->**0**: Floor
->**C**: Collectibles (gold)
->**X**: Enemies.
-
+```
+1: Walls
+P: Player
+E: Exit
+0: Floor
+C: Collectibles (gold)
+X: Enemies.
+```
 Additionally, the map must comply with the following requirementes:
-
->-It must be rectangular
->-It must have exactly one exit
->-It must have exactly one player
->-It must have at least one collectible
->-It must be surrounded by walls
->-File extension should be ".ber" (".BER" or ".Ber" won't work)
+```
+-It must be rectangular
+-It must have exactly one exit
+-It must have exactly one player
+-It must have at least one collectible
+-It must be surrounded by walls
+-File extension should be ".ber" (".BER" or ".Ber" won't work)
+```

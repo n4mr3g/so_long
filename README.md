@@ -9,11 +9,11 @@ I've written this game as part of the core curriculum of the coding school [42 W
 
 As per the subject required, I used the [minilibx library](https://github.com/42Paris/minilibx-linux) and my own versions of some other previous projects from the 42 core curriculum:
 
-### -libft:
+  - [libft](https://github.com/n4mr3g/libft):
 Library with rewritten functions from the C standard library + some extras.
-### -get_next_line:
+  - [get_next_line](https://github.com/n4mr3g/get_next_line):
 Read line by line from a file descriptor.
-### -ft_printf:
+  - [ft_printf](https://github.com/n4mr3g/ft_printf):
 Rewritten version of the _printf_ function.
 
 ## Objective:

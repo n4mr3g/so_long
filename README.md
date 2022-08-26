@@ -1,6 +1,6 @@
 # so_long
 
-![image](https://user-images.githubusercCancel changesontent.com/26860329/186975678-41fd5f18-ddf4-40fe-a708-8d5b1238203a.png)
+![image](https://user-images.githubusercontent.com/26860329/186975678-41fd5f18-ddf4-40fe-a708-8d5b1238203a.png)
 
 
 Simple game project written completely in C .

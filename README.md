@@ -9,9 +9,12 @@ This project part of the core curriculum of the coding school 42 Wolfsburg.
 
 As per the subject required, I used the minilibx library (https://github.com/42Paris/minilibx-linux) and some other previous projects from the 42 core curriculum:
 
--libft (rewritten functions from the C standard library + some extras)
--get_next_line (read line by line from a file descriptor)
--ft_printf (rewritten version of printf)
+### -libft:
+Rewritten functions from the C standard library + some extras.
+### -get_next_line:
+Read line by line from a file descriptor.
+### -ft_printf:
+Rewritten version of the _printf_ function.
 
 The objective of the game is to collect all the gold, avoid the (optional) enemies, and exit through the door.
 

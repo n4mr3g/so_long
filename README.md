@@ -7,7 +7,7 @@ Simple game project written completely in C.
 
 I've written this game as part of the core curriculum of the coding school [42 Wolfsburg](https://42wolfsburg.de/).
 
-As per the subject required, I used the [minilibx library](https://github.com/42Paris/minilibx-linux) and some other previous projects from the 42 core curriculum:
+As per the subject required, I used the [minilibx library](https://github.com/42Paris/minilibx-linux) and my own versions of some other previous projects from the 42 core curriculum:
 
 ### -libft:
 Library with rewritten functions from the C standard library + some extras.

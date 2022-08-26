@@ -6,7 +6,7 @@
 #    By: gpiccion <gpiccion@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/16 05:34:19 by gpiccion          #+#    #+#              #
-#    Updated: 2022/08/22 01:36:40 by gpiccion         ###   ########.fr        #
+#    Updated: 2022/08/26 16:04:59 by gpiccion         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,15 +22,15 @@ FT_PRINTF		=	$(LIBS_DIR)libftprintf.a
 
 SRC_NAMES		=	get_next_line.c \
 					inits.c \
-					draw_floor.c \
-					draw_collectibles.c \
-					draw_exit.c \
-					draw_player.c \
-					draw_walls.c \
+					draw.c \
 					load_map.c \
 					enemies.c \
-					player_controller.c \
+					game_events.c \
+					player_movement.c \
+					auxiliary.c \
+					validations.c \
 					error_mgmt.c \
+					program_end.c \
 					main.c
 
 
@@ -44,11 +44,11 @@ INCLUDES		=	-I./libs/libftprintf/includes \
 
 CC				=	cc
 
-CFLAGS			=	-O3 -fsanitize=address -g3 -Wall -Wextra #-Werror
+CFLAGS			=	-O3 -Wall -Wextra -Werror
 
 ##############		RULES		##############
 
-all: display $(NAME)
+all: $(NAME)
 
 $(NAME): $(MLX) $(FT_PRINTF) $(OBJ) 
 	$(CC) $(SRC) $(INCLUDES) -o $(NAME) -L./libs/mlx -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz -L./libs -lftprintf
@@ -61,9 +61,6 @@ $(FT_PRINTF):
 
 %.o: %.c
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
-
-display:
-	echo "export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0.0"
 
 clean:
 	make clean -C $(LIBS_DIR)mlx

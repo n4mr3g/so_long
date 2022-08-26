@@ -6,13 +6,15 @@
 /*   By: gpiccion <gpiccion@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 01:02:29 by gpiccion          #+#    #+#             */
-/*   Updated: 2022/08/22 13:16:45 by gpiccion         ###   ########.fr       */
+/*   Updated: 2022/08/26 13:07:07 by gpiccion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"so_long.h"
 
-
+// Allocates memory for the array of enemies (map->e_arr)
+// according to the counter "map->enemies",
+// and initializes each enemie's 'x' and 'y' values.
 void	enemies_init(t_map *map)
 {
 	int	i;
@@ -20,9 +22,9 @@ void	enemies_init(t_map *map)
 	i = 0;
 	if (map->enemies == 0)
 		return ;
-	map->e_arr = malloc(sizeof(t_enemy) * map->enemies + 1);
+	map->e_arr = (t_enemy *)malloc(sizeof(t_enemy) * map->enemies);
 	if (!map->e_arr)
-		error_exit(12, map);
+		error_exit(12, map->v);
 	while (i < map->enemies)
 	{
 		map->e_arr[i].x = 0;
@@ -31,65 +33,45 @@ void	enemies_init(t_map *map)
 	}
 }
 
-void	draw_enemies(t_map *map, t_vars *vars)
+// Called in draw_tiles_c() each time an 'X' is found in the map.
+// Sets the x and y coordinates of the enemy found.
+void	new_enemy(t_map *map, int y, int x)
 {
-	int		x;
-	int		y;
-	int		enemy_count;
-	t_image	enemy_img;
+	static int	i = 0;
 
-	enemy_img = img_init("images/enemy2.xpm", vars->mlx);
-	enemy_count = 0;
-	x = 0;
-	while (x < map->width)
-	{
-		y = 0;
-		while (y < map->height)
-		{
-			if (map->data[y][x] == 'X')
-			{
-				mlx_put_image_to_window(vars->mlx, vars->win, enemy_img.img,
-					x * TILESIZE, y * TILESIZE);
-				map->e_arr[enemy_count].x = x;
-				map->e_arr[enemy_count].y = y;
-				if (++enemy_count == map->enemies)
-					return ;
-			}
-			y++;
-		}
-		x++;
-	}
+	map->e_arr[i].x = x;
+	map->e_arr[i].y = y;
+	i++;
 }
 
-void	enemy_chase_player(t_enemy e, t_map *map, t_player *p)
+// Called by enemy_move() for each existing enemy.
+// Moves an enemy one position towards the player, if possible.
+void	enemy_chase_player(t_enemy *e, t_map *map, t_player *p)
 {
-	if (e.x < p->x && map->data[e.y][e.x + 1] == '0')
+	if (e->x < p->x && map->data[e->y][e->x + 1] == '0')
 	{
-		map->data[e.y][e.x] = '0';
-		e.x++;
+		map->data[e->y][e->x] = '0';
+		e->x++;
 	}
-	else if (e.x > p->x && map->data[e.y][e.x - 1] == '0')
+	else if (e->x > p->x && map->data[e->y][e->x - 1] == '0')
 	{
-		map->data[e.y][e.x] = '0';
-		e.x--;
+		map->data[e->y][e->x] = '0';
+		e->x--;
 	}
-	else if (e.y < p->y && map->data[e.y + 1][e.x] == '0')
+	else if (e->y < p->y && map->data[e->y + 1][e->x] == '0')
 	{
-		map->data[e.y][e.x] = '0';
-		e.y++;
+		map->data[e->y][e->x] = '0';
+		e->y++;
 	}
-	else if (e.y > p->y && map->data[e.y - 1][e.x] == '0')
+	else if (e->y > p->y && map->data[e->y - 1][e->x] == '0')
 	{
-		map->data[e.y][e.x] = '0';
-		e.y--;
+		map->data[e->y][e->x] = '0';
+		e->y--;
 	}
-	if (map->data[e.y][e.x] == 'P')
-		ft_printf("You died!");
-		// Lose condition
-	else
-		map->data[e.y][e.x] = 'X';
+	map->data[e->y][e->x] = 'X';
 }
 
+// Calls enemy_chase_player() for each existing enemy in the array of enemies.
 void	enemy_move(t_player *p, t_map *map)
 {
 	int	i;
@@ -97,7 +79,7 @@ void	enemy_move(t_player *p, t_map *map)
 	i = 0;
 	while (i < map->enemies)
 	{
-		enemy_chase_player(map->e_arr[i], map, p);
+		enemy_chase_player(map->e_arr + i, map, p);
 		i++;
 	}
 }

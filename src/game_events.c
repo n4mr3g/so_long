@@ -6,7 +6,7 @@
 /*   By: gpiccion <gpiccion@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 17:43:18 by gpiccion          #+#    #+#             */
-/*   Updated: 2022/08/26 01:49:58 by gpiccion         ###   ########.fr       */
+/*   Updated: 2022/08/26 21:48:59 by gpiccion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,6 @@ int	keyhook_funcs(int keycode, t_vars *v)
 		move_left(v);
 	else if (keycode == 100)
 		move_right(v);
-	else
-		ft_printf("%d\n", keycode);
 	return (0);
 }
 

@@ -18,7 +18,7 @@ Rewritten version of the _printf_ function.
 
 ## Objective / description:
 
-The objective of the game is to collect all the gold and exit through the door afterwards.
+The objective of the game is to, in the minimum amount of moves possible, collect all the gold and exit through the door afterwards.
 
 The optional enemies always chase the player, and running onto one of them will finish the game.
 

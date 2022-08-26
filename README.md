@@ -16,13 +16,20 @@ Read line by line from a file descriptor.
 ### -ft_printf:
 Rewritten version of the _printf_ function.
 
-## Objective / description:
+## Objective:
 
 The objective of the game is to, in the minimum amount of moves possible, collect all the gold and exit through the door afterwards.
 
 The optional enemies always chase the player, and running onto one of them will finish the game.
 
-Keys: WASD to move, ESC to exit.
+### Keys:
+**WASD** to move, **ESC** to exit.
+
+## Usage:
+
+After compiling with _make_, run the program like this:
+
+```./so_long [path to map].ber```
 
 The executable takes a .ber file as an argument, which should contain a valid map for the game that should look something like this:
 ```
